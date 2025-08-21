@@ -20,12 +20,18 @@ except FileNotFoundError:
 def main():
     global transactions, transaction_id, budget
     while True:
-        print("Please choose your option (type the number):\n 1. Add transcation: \n 2. Remove transaction:  \n 3. List transactions: \n 4. Plotting \n 5. Exit \n 6. Delete all data \n 7. Set new budget")
+        print("Please choose your option (type the number):\n 1. Add transcation: \n 2. Remove transaction:  \n 3. List transactions: \n 4. Plotting \n 5. Exit/Save \n 6. Delete all data \n 7. Set new budget")
         option = input()
         if option == "1":
             print("\n")
-            add_transaction(float(input("How much?: ")), input(
-                "What category?: "), input("Which date? (press enter for today): "))
+            try:
+                amount = float(input("How much?: "))
+            except ValueError:
+                print("Enter a valid number")
+                continue
+            category = input("What category?: ")
+            date = input("Which date? (press enter for today): ")
+            add_transaction(amount, category, date)
             print("\n")
 
         elif option == "2":
@@ -106,20 +112,25 @@ def list_transactions():
 
 
 def plotting():
-    transaction_data = {}
+    if transactions:
+        transaction_data = {}
 
-    for transaction in transactions:
-        if transaction["category"] in transaction_data:
-            transaction_data[transaction["category"]] += transaction["amount"]
-        else:
-            transaction_data[transaction["category"]] = transaction["amount"]
+        for transaction in transactions:
+            if transaction["category"] in transaction_data:
+                transaction_data[transaction["category"]
+                                 ] += transaction["amount"]
+            else:
+                transaction_data[transaction["category"]
+                                 ] = transaction["amount"]
 
-    labels = list(transaction_data.keys())
-    values = list(transaction_data.values())
+        labels = list(transaction_data.keys())
+        values = list(transaction_data.values())
 
-    plt.pie(values, labels=labels)
-    plt.legend(title="Spending by category")
-    plt.show()
+        plt.pie(values, labels=labels, autopct="%1.1f%%")
+        plt.legend(title="Spending by category")
+        plt.show()
+    else:
+        print("You have nothing to plot yet!")
 
 
 if __name__ == "__main__":
