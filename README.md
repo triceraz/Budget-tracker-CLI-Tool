@@ -17,7 +17,7 @@ A simple command-line Python program to track your expenses and budget.
 
 ```bash
 git clone https://github.com/triceraz/Budget-Tracker-CLI-Tool
-cd budget_tracker
+cd Budget-tracker-CLI-Tool
 ````
 
 2. Create a virtual environment (optional but recommended):
