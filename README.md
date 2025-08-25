@@ -51,6 +51,8 @@ Follow the on-screen menu to add, remove, or view transactions, set your budget,
 ## Files
 
 * `main.py` — main program.
+* `plotting.py` — plotting function.
+* `helpers.py` — helper functions.
 * `transactions.json` — stores budget and transaction data (auto-generated).
 * `requirements.txt` — lists dependencies (e.g., `matplotlib`).
 
