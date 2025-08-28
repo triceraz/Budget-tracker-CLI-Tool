@@ -16,7 +16,6 @@ except FileNotFoundError:
     transaction_id = 0
     budget = 0
 
-
 def main():
     global transactions, transaction_id, budget
     if budget == 0:

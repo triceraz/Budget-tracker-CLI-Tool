@@ -42,7 +42,7 @@ def list_transactions(transactions, budget):
     print("\n")
     for transaction in transactions:
         print(
-            f"{transaction["id"]}. [{transaction['date']}, ${transaction['amount']}, - {transaction['category']}]")
+            f"{transaction['id']}. [{transaction['date']}, ${transaction['amount']}, - {transaction['category']}]")
         total += transaction["amount"]
     print(
         f"\n You have a budget of {budget}, and have spent {total}. Your remaining total is {budget-total:.1f} \n")
